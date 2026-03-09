@@ -2,52 +2,73 @@
 
 On-prem AI knowledge infrastructure for organizations that cannot use cloud AI.
 
-Keystone AI is built for **regulated and compliance-constrained environments** where data sovereignty and auditability are mandatory.
+Keystone is being built for regulated and compliance-constrained environments where data sovereignty, access control, and auditability are mandatory.
 
 Runs fully on customer infrastructure. No external API calls. Air-gap compatible.
 
-## Current milestone: single-machine air-gapped proof (KDAT-001A)
+## Proven today: KDAT-001A
 
-The first public proof is a single-machine demo that runs fully offline and demonstrates:
+KDAT-001A is the current public proof: a single-machine demo that runs fully offline and demonstrates:
 
 - Evidence-backed answers with citations
 - Fail-closed behavior when evidence is insufficient
-- Query-time authorization (permission-aware retrieval)
-- Tamper-evident audit records for every query (verifiable chain)
-- Reproducible run (same results twice while air-gapped)
+- Query-time authorization
+- Tamper-evident audit logging with chain verification
+- Reproducible offline run on one machine
 
-## Core Capabilities
+### What KDAT-001A is
+- Single-machine proof of governed retrieval
+- Local inference via Ollama
+- Local vector search
+- Local audit trail
+- Proof-of-concept architecture, not production deployment
+
+### What KDAT-001A does not prove
+- Multi-node deployment
+- HA/DR or cross-site failover
+- OIDC / enterprise identity
+- Full enterprise networking patterns
+- Production-grade audit hardening
+- Retrieval quality at larger corpus scale
+
+## Core product direction
 
 ### Governed Retrieval
-- Query-time authorization (enforced at retrieval, not by trusting the LLM)
-- Metadata-filtered retrieval with ACL fidelity from source systems
-- Citation-backed answers with source lineage
+- Authorization enforced at query time
+- Evidence threshold outside the model
+- Citation-backed responses
+- Fail-closed behavior when evidence is insufficient
 
-### Multi-Source Ingestion
-- SharePoint (Microsoft Graph API with OAuth delegation)
-- File shares (SMB/NFS with permission metadata extraction)
-- Databases (PostgreSQL, SQL Server, MySQL)
-- Documents (PDF, Office formats, OCR fallback)
-
-### Audit-Grade Logging
-- Query, retrieval, and response logged by default
-- Exportable audit records for reviews and incident response
-- Evidence artifacts and runbook-driven verification
+### Governance Layer
+- Audit records for every query
+- Policy enforcement outside the LLM
+- Trust-boundary-first design
+- Honest documentation of limitations and residual risks
 
 ### On-Prem Deployment
-- Air-gap compatible operation (no internet required)
-- Docker Compose packaging for single-node and multi-node patterns
-- Network segmentation patterns for regulated environments
+- Customer-controlled infrastructure
+- No required cloud dependency for core operation
+- Air-gap compatible patterns
+- Single-machine first, multi-node later
 
 ## Repositories
 
 | Repository | Purpose |
 |-----------|---------|
-| `keystone-core` | Retrieval + ingestion engine |
-| `keystone-gov` | Authorization + audit records |
-| `keystone-deploy` | Compose + runbooks for deployment and demo |
-| `keystone-docs` | Architecture decisions, threat model, compliance notes |
-| `keystone-web` | Marketing site |
+| `keystone-core` | Retrieval and query pipeline |
+| `keystone-gov` | Authorization and audit subsystem |
+| `keystone-deploy` | Demo packaging and deployment runbooks |
+| `keystone-docs` | Architecture, ADRs, threat model, compliance notes |
+| `keystone-web` | Public website |
+
+## Near-term roadmap
+
+Next milestone: **KDAT-001B**
+- Retrieval evaluation
+- Adversarial ACL testing
+- Threat model publication
+- Demo video
+- External reproducibility validation
 
 ## Contact
 
