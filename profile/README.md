@@ -1,77 +1,45 @@
 # Keystone AI
 
-On-prem AI knowledge infrastructure for organizations that cannot use cloud AI.
+On-premises AI knowledge infrastructure for organizations that cannot use cloud AI.
 
-Keystone is being built for regulated and compliance-constrained environments where data sovereignty, access control, and auditability are mandatory.
+Built for regulated and compliance-constrained environments where data sovereignty,
+access control, and auditability are mandatory.
 
-Runs fully on customer infrastructure. No external API calls. Air-gap compatible.
+No external API calls. Air-gap compatible. Runs entirely on customer infrastructure.
+
+---
 
 ## Proven today: KDAT-001A
 
-KDAT-001A is the current public proof: a single-machine demo that runs fully offline and demonstrates:
+Single-machine offline proof demonstrating:
 
-- Evidence-backed answers with citations
-- Fail-closed behavior when evidence is insufficient
-- Query-time authorization
-- Tamper-evident audit logging with chain verification
-- Reproducible offline run on one machine
+| Property | What is proven |
+|---|---|
+| Query-time ACL enforcement | Groups checked before retrieval. Users cannot retrieve unauthorized documents. |
+| Evidence-backed answers | Every response cites a specific source document. |
+| Fail-closed behavior | System refuses to answer when evidence is insufficient. See ADR-001. |
+| Tamper-evident audit log | Hash-chained records. App DB user has INSERT-only permission. |
+| Offline operation | Single machine, no internet connection required. |
 
-### What KDAT-001A is
-- Single-machine proof of governed retrieval
-- Local inference via Ollama
-- Local vector search
-- Local audit trail
-- Proof-of-concept architecture, not production deployment
+## What KDAT-001A does NOT prove
 
-### What KDAT-001A does not prove
-- Multi-node deployment
-- HA/DR or cross-site failover
-- OIDC / enterprise identity
-- Full enterprise networking patterns
-- Production-grade audit hardening
-- Retrieval quality at larger corpus scale
-
-## Core product direction
-
-### Governed Retrieval
-- Authorization enforced at query time
-- Evidence threshold outside the model
-- Citation-backed responses
-- Fail-closed behavior when evidence is insufficient
-
-### Governance Layer
-- Audit records for every query
-- Policy enforcement outside the LLM
-- Trust-boundary-first design
-- Honest documentation of limitations and residual risks
-
-### On-Prem Deployment
-- Customer-controlled infrastructure
-- No required cloud dependency for core operation
-- Air-gap compatible patterns
-- Single-machine first, multi-node later
+- Multi-node or HA/DR deployment
+- Enterprise identity (OIDC/SAML)
+- Production-scale corpus validation
+- Multi-source ingestion (SharePoint, SMB, SQL) — designed for, not yet demonstrated
+- Compliance certification of any kind
 
 ## Repositories
 
-| Repository | Purpose |
-|-----------|---------|
-| `keystone-core` | Retrieval and query pipeline |
-| `keystone-gov` | Authorization and audit subsystem |
-| `keystone-deploy` | Demo packaging and deployment runbooks |
-| `keystone-docs` | Architecture, ADRs, threat model, compliance notes |
-| `keystone-web` | Public website |
+| Repo | Purpose |
+|---|---|
+| [keystone-docs](https://github.com/getkeystone/keystone-docs) | Architecture, ADRs, threat model, KDAT evidence folders. Start here. |
+| [keystone-core](https://github.com/getkeystone/keystone-core) | Retrieval and query pipeline. |
+| [keystone-gov](https://github.com/getkeystone/keystone-gov) | Query-time authorization and tamper-evident audit subsystem. |
+| [keystone-deploy](https://github.com/getkeystone/keystone-deploy) | Docker Compose packaging for reproducible offline demos. |
 
-## Near-term roadmap
+---
 
-Next milestone: **KDAT-001B**
-- Retrieval evaluation
-- Adversarial ACL testing
-- Threat model publication
-- Demo video
-- External reproducibility validation
-
-## Contact
-
-🌐 https://getkeystone.ai  
-📧 arnaldo@getkeystone.ai  
-💼 https://linkedin.com/in/arnaldo-sepulveda
+**Contact:** arnaldo@getkeystone.ai
+**Website:** https://getkeystone.ai
+**LinkedIn:** https://linkedin.com/in/arnaldo-sepulveda
