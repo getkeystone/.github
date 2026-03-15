@@ -30,7 +30,7 @@ This organization is split into two layers:
 - **KDAT-019**
 - **KDAT-021**
 
-That gives a current public snapshot of **17 ready-to-publish milestones**:
+That gives a current public snapshot of **18 ready-to-publish milestones**:
 - **2 historical baselines**
 - **15 proven on current branch**
 
