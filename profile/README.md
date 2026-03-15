@@ -30,9 +30,9 @@ This organization is split into two layers:
 - **KDAT-019**
 - **KDAT-021**
 
-That gives a current public snapshot of **19 ready-to-publish milestones**:
+That gives a current public snapshot of **28 ready-to-publish milestones**:
 - **2 historical baselines**
-- **15 proven on current branch**
+- **26 proven on current branch**
 
 ### Not yet safe to present as proven
 Some milestones are intentionally tracked but remain:
