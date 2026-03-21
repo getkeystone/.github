@@ -1,43 +1,53 @@
 # Keystone AI
 
-On-prem AI knowledge infrastructure for organizations that cannot rely on cloud AI.
+On-prem controlled procedure retrieval for industrial safety and regulated operations.
 
-Built for regulated and operational environments where answers must be grounded in approved source material, access must be enforced before retrieval, and every response must remain auditable.
+Built for environments where answers must come from approved source material,
+access must be enforced before retrieval, and every response must be auditable.
 
-## What this GitHub organization contains
+## Live Demo
 
-This organization has two layers:
+**[demo.getkeystone.ai](https://demo.getkeystone.ai)** -- 57 Alberta OHS safety documents.
+Log in as `operator1` / `demo123`.
+Ask: "What atmospheric testing is required before entering a confined space?"
 
-- **Implementation repos** for governed retrieval, console UX, governance controls, and deployment
-- **Public proof artifacts** showing what has been demonstrated, how it was verified, and what is still not claimed
+## What is demonstrated today
 
-## What is already demonstrated
+- Hybrid retrieval: keyword search + semantic search with adaptive weighting
+- AI-synthesized answers with source citations (document, page, passage)
+- Fail-closed behavior: refuses when evidence is insufficient
+- Query-time access control enforced before retrieval (four-role model)
+- Tamper-evident audit trail with HMAC hash chain
+- Prompt injection mitigation (10/10 adversarial tests blocked)
+- Retrieval quality: 95% on 20-query automated eval suite
+- Config-driven deployment (same engine, different document sets)
+- Security hardened API (session TTL, rate limiting, input sanitization)
+- Professional operator-facing console with role-aware navigation
 
-- On-prem, customer-controlled operation with no external API dependency for core workflows
-- Access control enforced before retrieval
-- Evidence-backed answers with source traceability
-- Fail-closed behavior when evidence is insufficient or access is restricted
-- Tamper-evident audit records and offline verification workflows
-- Backup, restore, and restore-drill discipline
-- Supply chain manifesting and restore enforcement
-- Operational smoke checks and timer-based health verification
-- Governed operator-facing workflow for controlled retrieval and review
+## What is NOT claimed
+
+- Enterprise HA or disaster recovery
+- Multi-node or distributed deployment
+- OIDC/SAML production identity integration
+- Third-party penetration testing
+- WCAG accessibility compliance
+
+When evidence quality is weaker, we say so. See the proof ledger.
 
 ## Where to verify claims
 
-We keep public proof separate from marketing language.
-
-- **Proof ledger:** [keystone-kdat](https://github.com/getkeystone/keystone-kdat)
-- **Website:** [getkeystone.ai](https://getkeystone.ai)
-- **Technical docs:** available on request
-
-## Start here
-
 | Resource | Purpose |
 |---|---|
-| [keystone-kdat](https://github.com/getkeystone/keystone-kdat) | Public proof ledger and claim boundaries |
-| keystone-docs | Architecture, ADRs, and technical support material — planned to be public or available on request |
-| Internal implementation repos | Retrieval, governance, console, and deployment code — not public by default |
+| [demo.getkeystone.ai](https://demo.getkeystone.ai) | Live demo with Alberta OHS documents |
+| [keystone-kdat](https://github.com/getkeystone/keystone-kdat) | Public proof ledger with evidence boundaries |
+| [getkeystone.ai](https://getkeystone.ai) | Product website |
+
+## Stack
+
+Python, FastAPI, PostgreSQL + pgvector, Ollama (local LLM inference),
+Docker Compose, Cloudflare (tunnel + TLS).
+
+No cloud dependency for core operation. Air-gap compatible.
 
 ## Contact
 
