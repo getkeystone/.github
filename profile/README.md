@@ -20,6 +20,9 @@ Ask: "What atmospheric testing is required before entering a confined space?"
 - Document version tracking with point-in-time retrieval
 - Config-driven multi-deployment architecture (same engine, different document sets and feature flags)
 
+## In development
+Governed agent extension (KDAT-002): same governance primitives applied to tool-using agents. Per-step authorization, action audit trails, HITL approval enforced at the API layer. Follow this org for updates.
+
 ## Evaluation baseline (KDAT-001B, 2026-04-11)
 
 - Retrieval: P@1 = 0.75, MRR = 0.79
