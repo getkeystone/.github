@@ -49,3 +49,5 @@ Python, FastAPI, PostgreSQL 16 + pgvector, Ollama (nomic-embed-text, qwen2.5:7b-
 | Website | [getkeystone.ai](https://getkeystone.ai) |
 | Live demo | [demo.getkeystone.ai](https://demo.getkeystone.ai) |
 | LinkedIn | [Arnaldo Sepulveda](https://linkedin.com/in/arnaldosepulveda) |
+| Eval ledger | [getkeystone/keystone-kdat](https://github.com/getkeystone/keystone-kdat) |
+| Contact | [arnaldo@getkeystone.ai](mailto:arnaldo@getkeystone.ai) |
