@@ -23,6 +23,11 @@ Ask: "What atmospheric testing is required before entering a confined space?"
 ## In development
 Governed agent extension (KDAT-002): same governance primitives applied to tool-using agents. Per-step authorization, action audit trails, HITL approval enforced at the API layer. Follow this org for updates.
 
+## Hackathon demo
+
+[governed-incident-agent](https://github.com/arnaldosepulveda/governed-incident-agent) —
+KDAT-002 governance architecture applied to a CopilotKit generative UI. Per-action authorization, fail-closed refusal, tamper-evident audit trail rendered as interactive components. Built at AI Tinkerers Global Hackathon,May 2026.
+
 ## Evaluation baseline (KDAT-001B, 2026-04-11)
 
 - Retrieval: P@1 = 0.75, MRR = 0.79
