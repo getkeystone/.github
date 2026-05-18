@@ -1,4 +1,4 @@
-# Keystone AI
+# Keystone Applied Intelligence
 
 Governed knowledge retrieval for regulated industries. On-premises, evidence-backed, fail-closed.
 
