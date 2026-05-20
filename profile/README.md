@@ -24,11 +24,11 @@ Ask: "What atmospheric testing is required before entering a confined space?"
 
 ## Governed agent extension (KDAT-002)
 
-Same governance primitives applied to tool-using agents: per-step authorization, action audit trails, HITL approval enforced at the API layer. H1 confirmed 2026-05-20. 66 eval cases × 3 runs, 0 failures. All adversarial categories at 100% strict pass.
+Same governance primitives applied to tool-using agents: per-step authorization, action audit trails, HITL approval enforced at the API layer. H1 confirmed 2026-05-20 (KDAT-002D). 186 eval cases, 12 categories, 558 executions, 0 failures. Eval identified 4 system bugs; all fixed and re-verified. Failing run (KDAT-002C) published.
 
 ## Recent
 
-**KDAT-002 shipped (2026-05-20, v0.6.1).** Governed agent extension baseline confirmed. 66 eval cases, 0 failures. H1 confirmed: governance primitives extend to tool-using agents without redesign. Full results in [keystone-kdat](https://github.com/getkeystone/keystone-kdat).
+**Governed agent extension (KDAT-002D, 2026-05-20):** 186 eval cases, 12 categories, 558 executions, 153 strict pass, 33 characterization, 0 fail. Spec-compliant expansion from 66 to 186 cases identified 4 real system bugs (HMAC timestamp mismatch, 3 injection scanner gaps); all fixed and re-verified. Failing run (KDAT-002C) published. H1 confirmed: governance primitives for retrieval extend to tool-using agents. Full results in [keystone-kdat](https://github.com/getkeystone/keystone-kdat).
 
 **FC-005 remediated (2026-05-17, v0.5.2-fc005).** Pre-retrieval domain scope guard refusing out-of-corpus queries (emissions regulations, workers comp, tax, IT procurement). Closes the FC-005 failure mode from KDAT-001B. Commit: [38ef89f](https://github.com/getkeystone/keystone-gov/commit/38ef89f).
 
@@ -40,7 +40,7 @@ Same governance primitives applied to tool-using agents: per-step authorization,
 
 ## Evaluation baselines
 
-**KDAT-002B (2026-05-20):** Governed agent extension. 66 eval cases × 3 runs, 0 failures, 8 characterization. H1 confirmed. All STRIDE categories and severity tiers covered. Audit chain intact.
+**Governed agent extension (KDAT-002D, 2026-05-20):** 186 eval cases, 12 categories, 558 executions, 153 strict pass, 33 characterization, 0 fail. Spec-compliant expansion from 66 to 186 cases identified 4 real system bugs (HMAC timestamp mismatch, 3 injection scanner gaps); all fixed and re-verified. Failing run (KDAT-002C) published. H1 confirmed: governance primitives for retrieval extend to tool-using agents.
 
 **KDAT-001B (2026-04-11):** Governed retrieval.
 - Retrieval: P@1 = 0.75, MRR = 0.79
