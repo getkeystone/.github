@@ -1,6 +1,6 @@
 # Keystone Applied Intelligence
 
-Governed knowledge retrieval for regulated industries. On-premises, evidence-backed, fail-closed.
+Governed knowledge retrieval and agent system for regulated industries. On-premises, evidence-backed, fail-closed.
 
 The system serves approved procedures with source citations and role-based access control, refuses when evidence is insufficient or out of corpus scope, scores every response for factual consistency, and records a tamper-evident audit trail. Runs entirely on customer-controlled infrastructure with no external API dependencies.
 
@@ -22,13 +22,15 @@ Ask: "What atmospheric testing is required before entering a confined space?"
 - Document version tracking with point-in-time retrieval
 - Config-driven multi-deployment architecture (same engine, different document sets and feature flags)
 
-## In development
+## Governed agent extension (KDAT-002)
 
-Governed agent extension (KDAT-002): same governance primitives applied to tool-using agents. Per-step authorization, action audit trails, HITL approval enforced at the API layer. Follow this org for updates.
+Same governance primitives applied to tool-using agents: per-step authorization, action audit trails, HITL approval enforced at the API layer. H1 confirmed 2026-05-20. 66 eval cases × 3 runs, 0 failures. All adversarial categories at 100% strict pass.
 
 ## Recent
 
-**FC-005 remediation deployed (2026-05-17, v0.5.2-fc005).** Pre-retrieval domain scope guard refusing out-of-corpus queries (emissions regulations, workers comp, tax, IT procurement). Closes the FC-005 failure mode from KDAT-001B where a TIER greenhouse gas query returned Part 36 mine gas chunks via embedding overlap. Validated manually against the KDAT-001B probe set. Full taxonomy-based two-stage gate scoped for KDAT-002. Commit: [38ef89f](https://github.com/getkeystone/keystone-gov/commit/38ef89f).
+**KDAT-002 shipped (2026-05-20, v0.6.1).** Governed agent extension baseline confirmed. 66 eval cases, 0 failures. H1 confirmed: governance primitives extend to tool-using agents without redesign. Full results in [keystone-kdat](https://github.com/getkeystone/keystone-kdat).
+
+**FC-005 remediated (2026-05-17, v0.5.2-fc005).** Pre-retrieval domain scope guard refusing out-of-corpus queries (emissions regulations, workers comp, tax, IT procurement). Closes the FC-005 failure mode from KDAT-001B. Commit: [38ef89f](https://github.com/getkeystone/keystone-gov/commit/38ef89f).
 
 ## Hackathon work (May 2026)
 
@@ -36,12 +38,15 @@ Governed agent extension (KDAT-002): same governance primitives applied to tool-
 
 [**Provana AcuteCare**](https://getkeystone.ai/blog/provana-acutecare/) — Clinical copilot with role-based action guardrails. Built collaboratively at the same hackathon, applying the governed-incident-agent scaffold to acute care medicine. Same governance architecture, different domain.
 
-## Evaluation baseline (KDAT-001B, 2026-04-11)
+## Evaluation baselines
 
+**KDAT-002B (2026-05-20):** Governed agent extension. 66 eval cases × 3 runs, 0 failures, 8 characterization. H1 confirmed. All STRIDE categories and severity tiers covered. Audit chain intact.
+
+**KDAT-001B (2026-04-11):** Governed retrieval.
 - Retrieval: P@1 = 0.75, MRR = 0.79
 - Adversarial ACL testing: 8/8 blocked, 0 leaks
 - Audit chain: intact and immutable
-- Fail-closed: 5/6 (83%). FC-005 remediated 2026-05-17; sealed re-eval pending KDAT-002.
+- Fail-closed: 5/6 (83%). FC-005 remediated 2026-05-17.
 
 ## Not claimed
 
