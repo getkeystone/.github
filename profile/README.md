@@ -8,7 +8,7 @@ The system serves approved procedures with source citations and role-based acces
 
 ## Live demo
 
-demo.getkeystone.ai — 53 Alberta OHS safety documents. Log in as operator1 / demo123. Ask: "What atmospheric testing is required before entering a confined space?"
+demo.getkeystone.ai - 53 Alberta OHS safety documents. Log in as operator1 / demo123. Ask: "What atmospheric testing is required before entering a confined space?"
 
 ## Demonstrated capabilities
 
