@@ -1,83 +1,112 @@
 # Keystone Applied Intelligence
 
-Governed conversational and retrieval AI for regulated industries. On-premises, evidence-backed, fail-closed.
+Governed AI infrastructure for regulated industries.  
+On-premises, evidence-backed, fail-closed.
 
-Built from operational discipline, not from demos. Every architectural decision traces to a documented contact center governance pattern (severity-tier escalation, compliance logging, per-step validation, confidence-threshold refusal), rebuilt for the LLM substrate.
+Keystone Applied Intelligence is a platform for AI systems that must operate under real regulatory pressure. It is built for environments where wrong answers, unauthorized retrieval, or unaudited actions create safety, compliance, or legal risk.
 
-The system serves approved procedures with source citations and role-based access control, refuses when evidence is insufficient or out of corpus scope, scores every response for factual consistency, and records a tamper-evident audit trail. Runs entirely on customer-controlled infrastructure with no external API dependencies.
+This is not a demo wrapper around a model API. It is a governed operating model for retrieval and agent systems: evidence-backed answers, authorization at query time, fail-closed refusal, tamper-evident audit trails, and reproducible evaluation.
 
-## Live demo
+## What the platform covers
 
-demo.getkeystone.ai - 53 Alberta OHS safety documents. Log in as operator1 / demo123. Ask: "What atmospheric testing is required before entering a confined space?"
+Keystone currently spans three regulated AI workloads on one shared substrate:
 
-## Demonstrated capabilities
+- **Keystone Engage** — governed conversational agents for regulated customer interaction.
+- **Keystone Counsel** — authorization-first retrieval for legal, financial, and compliance content.
+- **Keystone Verify** — standalone evaluation harness for governed AI systems.
 
-- Pre-retrieval query pipeline: input validation, prompt injection check, jurisdiction guard, domain scope guard, RBAC
-- Hybrid retrieval (pgvector + full-text search) with ACL filtering and reranking
-- Evidence thresholding before LLM synthesis
-- Factual consistency scoring (HHEM-2.1-Open) on every response
-- Fail-closed refusal on insufficient evidence or out-of-corpus queries
-- Tamper-evident audit trail with HMAC-SHA256 hash chain and INSERT-only database role
-- Governed review workflow with separation of duties enforced at the API layer
-- Document version tracking with point-in-time retrieval
-- Config-driven multi-deployment architecture (same engine, different document sets and feature flags)
+Together they show that Keystone is not one use case. It is a reusable platform for multiple regulated AI workloads.
 
-### Governed agent extension (keystone-core/agent, formerly KDAT-002)
+## Shared substrate
 
-Same governance primitives applied to tool-using agents: per-step authorization, action audit trails, HITL approval enforced at the API layer. H1 confirmed 2026-05-20 (keystone-core/agent-v1, formerly KDAT-002D). 186 eval cases, 12 categories, 558 executions, 0 failures. Eval identified 4 system bugs; all fixed and re-verified. Failing run (keystone-core/agent-v0, formerly KDAT-002C) published.
+The platform substrate provides the mechanics that make this a platform instead of a collection of apps:
 
-## Recent
+- agent identity and role registration,
+- task lifecycle state management,
+- hash-chained audit logging,
+- event-driven coordination,
+- dispatch abstraction for local or remote execution,
+- sealed evaluation artifacts.
 
-Governed agent extension (keystone-core/agent-v1, 2026-05-20): 186 eval cases, 12 categories, 558 executions, 153 strict pass, 33 characterization, 0 fail. Spec-compliant expansion from 66 to 186 cases identified 4 real system bugs (HMAC timestamp mismatch, 3 injection scanner gaps); all fixed and re-verified. Failing run (keystone-core/agent-v0) published. H1 confirmed: governance primitives for retrieval extend to tool-using agents. Full results in keystone-kdat.
+New behaviors can be added by registering new agents or profiles instead of rebuilding orchestration each time.
 
-FC-005 remediated (2026-05-17, v0.5.2-fc005). Pre-retrieval domain scope guard refusing out-of-corpus queries (emissions regulations, workers comp, tax, IT procurement). Closes the FC-005 failure mode from keystone-core/retrieval-v1 (formerly KDAT-001B). Commit: 38ef89f.
+## What Keystone enforces
 
-### Hackathon work (May 2026)
+These are structural properties, not prompt instructions:
 
-**governed-incident-agent** — keystone-core/agent governance architecture applied to a CopilotKit generative UI. Per-action authorization, fail-closed refusal, tamper-evident audit trail rendered as interactive components. Built solo for the AI Tinkerers Generative UI Hackathon, Boston, May 9, 2026.
+- evidence-backed answers tied to source documents,
+- fail-closed refusal when evidence is insufficient,
+- access control enforced at retrieval time,
+- tamper-evident auditability for queries and actions,
+- human review for high-consequence actions,
+- local-first deployment with no external API dependency for core operation.
 
-**Provana AcuteCare** — Clinical copilot with role-based action guardrails. Built collaboratively at the same hackathon, applying the governed-incident-agent scaffold to acute care medicine. Same governance architecture, different domain.
+## Proven, not implied
 
-## Evaluation baselines
+Keystone publishes working systems, eval baselines, failing runs, passing runs, and remediation history.
 
-Governed agent extension (keystone-core/agent-v1, 2026-05-20): 186 eval cases, 12 categories, 558 executions, 153 strict pass, 33 characterization, 0 fail. Spec-compliant expansion from 66 to 186 cases identified 4 real system bugs (HMAC timestamp mismatch, 3 injection scanner gaps); all fixed and re-verified. Failing run (keystone-core/agent-v0) published. H1 confirmed: governance primitives for retrieval extend to tool-using agents.
+Current public proof includes:
 
-keystone-core/retrieval-v1 (2026-04-11): Governed retrieval.
+- governed retrieval baseline with adversarial ACL blocking and fail-closed behavior,
+- governed agent baseline with 186 test cases across 12 categories and 0 failures,
+- evaluation methodology that identified real bugs in the system it was testing,
+- failing runs preserved alongside passing runs as part of the public record.
 
-- Retrieval: P@1 = 0.75, MRR = 0.79
-- Adversarial ACL testing: 8/8 blocked, 0 leaks
-- Audit chain: intact and immutable
-- Fail-closed: 5/6 (83%). FC-005 remediated 2026-05-17.
+The point is not just to ship behavior. The point is to make claims that survive inspection.
 
-Forward eval lineage uses `keystone-{component}/{type}-v{n}` versioning. keystone-core/retrieval-v1 and keystone-core/agent-v1 remain published as the canonical historical baselines; the migration cross-reference lives in keystone-kdat.
+## Current repositories
 
-## Next
+- [`keystone-engage`](https://github.com/getkeystone/keystone-engage) — governed conversational agents for regulated customer interaction.
+- [`keystone-counsel`](https://github.com/getkeystone/keystone-counsel) — regulated content retrieval with authorization-first design.
+- [`keystone-verify`](https://github.com/getkeystone/keystone-verify) — reusable evaluation harness for governed AI systems.
+- [`keystone-kdat`](https://github.com/getkeystone/keystone-kdat) — evaluation ledger and lineage.
+- [`keystone-web`](https://github.com/getkeystone/keystone-web) — project website.
 
-The platform is extending into three regulated verticals:
+## Technical position
 
-- **keystone-engage** — governed conversational agents for regulated customer interaction. Severity-tier HITL, behavioral content library with citation, per-step evidence gating. Direct continuation of the keystone-core/agent work.
-- **keystone-counsel** — regulated content retrieval for legal and financial advisory contexts. Direct continuation of the keystone-core/retrieval (formerly KDAT-001) work, applied to higher-stakes corpora.
-- **keystone-verify** — standalone evaluation harness released as a public framework. Productization of the discipline that found four real bugs in keystone-core/agent.
+Most LLM systems are still missing the operational discipline that regulated enterprise environments have required for years:
+
+- severity-tier escalation,
+- per-step validation,
+- compliance logging,
+- explicit authorization boundaries,
+- confidence-threshold refusal,
+- evaluation that preserves failing evidence instead of hiding it.
+
+Keystone rebuilds that discipline for the LLM substrate.
+
+## Deployment model
+
+Keystone is designed for regulated deployment reality:
+
+- local inference,
+- local storage,
+- local messaging,
+- local observability,
+- customer-controlled infrastructure.
+
+Core operation does not require sending sensitive data to third-party model providers.
 
 ## Not claimed
 
-- Enterprise HA or disaster recovery
-- Multi-node or distributed deployment
-- OIDC/SAML production identity integration
-- Third-party penetration testing
-- WCAG accessibility compliance
+Keystone does **not** currently claim:
+
+- enterprise HA or disaster recovery,
+- multi-node distributed production deployment,
+- production OIDC/SAML identity integration,
+- third-party penetration testing,
+- formal accessibility certification.
+
+Claims are limited to what has been built, tested, and published.
 
 ## Stack
 
-Python, FastAPI, PostgreSQL 16 + pgvector, Ollama (nomic-embed-text, qwen2.5:7b-instruct), React/TypeScript/Tailwind, Docker Compose, Caddy, Cloudflare Tunnels. No cloud dependency for core operation.
+Python · FastAPI · PostgreSQL 16 + pgvector · Ollama · React / TypeScript · Docker Compose · NATS JetStream · Grafana Tempo · Caddy · Cloudflare Tunnels
 
 ## Links
 
-| | |
-|---|---|
-| Website | getkeystone.ai |
-| Live demo | demo.getkeystone.ai |
-| Blog | getkeystone.ai/blog |
-| LinkedIn | Arnaldo Sepulveda |
-| Eval ledger | getkeystone/keystone-kdat |
-| Contact | arnaldo@getkeystone.ai |
+- Website: [getkeystone.ai](https://getkeystone.ai)
+- Demo: [demo.getkeystone.ai](https://demo.getkeystone.ai)
+- Blog: [getkeystone.ai/blog](https://getkeystone.ai/blog/)
+- Eval ledger: [getkeystone/keystone-kdat](https://github.com/getkeystone/keystone-kdat)
+- Lead engineer: [Arnaldo Sepulveda](https://www.linkedin.com/in/arnaldosepulveda/)
