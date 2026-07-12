@@ -59,7 +59,7 @@ The point is not just to ship behavior. The point is to make claims that survive
 - [`keystone-engage`](https://github.com/getkeystone/keystone-engage) — governed conversational agents for regulated customer interaction.
 - [`keystone-counsel`](https://github.com/getkeystone/keystone-counsel) — regulated content retrieval with authorization-first design.
 - [`keystone-verify`](https://github.com/getkeystone/keystone-verify) — reusable evaluation harness for governed AI systems.
-- [`keystone-kdat`](https://github.com/getkeystone/keystone-kdat) — evaluation ledger and lineage.
+- [`keystone-ledger`](https://github.com/getkeystone/keystone-ledger) — evaluation ledger and lineage.
 - [`keystone-web`](https://github.com/getkeystone/keystone-web) — project website.
 
 ## Technical position
@@ -108,5 +108,5 @@ Python · FastAPI · PostgreSQL 16 + pgvector · Ollama · React / TypeScript ·
 - Website: [getkeystone.ai](https://getkeystone.ai)
 - Demo: [demo.getkeystone.ai](https://demo.getkeystone.ai)
 - Blog: [getkeystone.ai/blog](https://getkeystone.ai/blog/)
-- Eval ledger: [getkeystone/keystone-kdat](https://github.com/getkeystone/keystone-kdat)
+- Eval ledger: [getkeystone/keystone-ledger](https://github.com/getkeystone/keystone-ledger)
 - Lead engineer: [Arnaldo Sepulveda](https://www.linkedin.com/in/arnaldosepulveda/)
