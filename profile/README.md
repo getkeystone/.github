@@ -46,7 +46,7 @@ inspection.
 
 ## Public artifacts
 
-- **[Platform documentation](https://getkeystone.ai/docs/)** — architecture, the
+- **[Platform documentation](https://docs.getkeystone.ai/)** — architecture, the
   substrate model, extension capabilities, evaluation methodology, and access policy.
 - **[keystone-verify](https://github.com/getkeystone/keystone-verify)** — the
   open, endpoint-agnostic evaluation framework.
@@ -64,7 +64,7 @@ rationale are public (above); the implementation is the product.
 
 Read-only access for interview-depth technical review is available on request to
 hiring managers, staff engineers, and technical evaluators. Response within 24
-hours. See the [access policy](https://getkeystone.ai/docs/access/).
+hours. See the [access policy](https://docs.getkeystone.ai/access/).
 
 ## Not claimed
 
@@ -76,7 +76,7 @@ are limited to what has been built, tested, and published.
 ## Links
 
 - Website: [getkeystone.ai](https://getkeystone.ai)
-- Docs: [getkeystone.ai/docs](https://getkeystone.ai/docs/)
+- Docs: [docs.getkeystone.ai](https://docs.getkeystone.ai/)
 - Platform: [getkeystone.ai/platform](https://getkeystone.ai/platform/)
 - Eval ledger: [getkeystone/keystone-ledger](https://github.com/getkeystone/keystone-ledger)
 - Lead engineer: [Arnaldo Sepulveda](https://www.linkedin.com/in/arnaldosepulveda/)
