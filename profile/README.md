@@ -1,94 +1,200 @@
 # Keystone Applied Intelligence
 
-**Governed agentic systems and retrieval infrastructure for regulated environments.**  
-Local-first, evidence-backed, fail-closed. CX governance discipline rebuilt for the LLM substrate.
+**Governed AI systems, retrieval, and evaluation infrastructure for regulated environments.**
 
-Keystone builds AI systems that must operate under real regulatory pressure — where a wrong answer, an unauthorized retrieval, or an unaudited action creates safety, compliance, or legal risk.
+Local-first. Evidence-backed. Fail-closed.
 
-The platform is three extensions on one shared substrate, with governance, authorization, and evaluation designed in from the first commit rather than bolted on afterward. It is a governed operating model for retrieval and agent systems, not a demo wrapper around a model API.
+Keystone Applied Intelligence is an independent engineering and R&D practice exploring how AI systems can operate under explicit authority, evidence, evaluation, and audit constraints.
 
----
+The work focuses on the runtime layer between model capability and production consequence.
 
-## What the platform covers
-
-Three regulated AI workloads on one shared substrate:
-
-- **Engage** — governed conversational agents for regulated customer interaction.  
-- **Counsel** — authorization-first retrieval for legal, financial, and compliance content.  
-- **Verify** — an endpoint-agnostic evaluation harness for governed AI systems.  
-
-The **substrate** — agent registry, task state machine, hash-chained audit ledger, event bus, agent-scoped tools, and cost-aware dispatch — is what makes this a platform: new behaviors register onto it instead of rebuilding orchestration from scratch.
+The goal is not to make stronger claims about AI systems. It is to make narrower claims that can be tested, inspected, reproduced, and challenged.
 
 ---
 
-## What Keystone enforces
+## What Keystone builds
 
-Structural properties, not prompt instructions:
+Keystone currently develops three related workloads on shared infrastructure:
 
-- Evidence-backed answers tied to source documents  
-- Fail-closed refusal when evidence or authorization is insufficient  
-- Access control enforced at retrieval time (in the query, not after it)  
-- Tamper-evident, hash-chained auditability for queries and actions  
-- Human review for high-consequence actions  
-- Local-first deployment with no external model-API dependency for core operation  
+### Keystone Engage
+
+Governed conversational and agent workflows for higher-consequence interactions, including explicit task state, evaluation, escalation, and human review patterns.
+
+### Keystone Counsel
+
+Authorization-first retrieval for legal, financial, compliance, and other access-controlled knowledge workloads.
+
+### Keystone Verify
+
+Endpoint-agnostic evaluation infrastructure for governed retrieval and agent systems, with reproducible artifacts and regression evidence.
+
+These workloads share common infrastructure for identity, task state, retrieval authorization, event-driven coordination, audit evidence, evaluation, observability, and model dispatch.
 
 ---
 
-## Proven, not implied
+## Implemented controls
 
-Keystone publishes eval baselines, failing runs, passing runs, and remediation history. Current public proof includes:
+Keystone treats governance controls as runtime mechanisms rather than prompt instructions.
 
-- A governed retrieval baseline with adversarial ACL blocking and fail-closed behavior  
-- A governed agent baseline of 186 cases across 12 categories with 0 failures  
-- An evaluation methodology that surfaced real bugs in the system it was testing — with the failing runs preserved alongside the passing runs  
+Current implementation work includes:
 
-The point is to make claims that survive inspection.
+* Authorization applied before protected content enters model context
+* Query-time and corpus-scope retrieval predicates
+* Fail-closed refusal when evidence or authorization is insufficient
+* Explicit task lifecycle state
+* Agent and runtime identity records
+* Event-driven execution coordination
+* Hash-chained audit records
+* Endpoint-agnostic evaluation harnesses
+* Structured failing and passing evaluation artifacts
+* OpenTelemetry instrumentation for tokens, latency, cost, and budget
+* Local-first model execution without external model-API dependency for core operation
+
+Some broader governance mechanisms described in Keystone research, including generalized action-binding and change-aware execution-boundary revalidation, remain research architecture rather than demonstrated platform guarantees.
+
+---
+
+## Evaluation
+
+Keystone publishes evaluation artifacts instead of treating successful demos as sufficient evidence.
+
+Current evaluation work includes:
+
+* A governed retrieval baseline with adversarial authorization testing
+* Fail-closed retrieval behavior
+* 186 evaluation cases across 12 categories and 558 executions
+* Regression testing that surfaced real system defects before release
+* Preserved failing runs alongside repaired and passing runs
+* Structured evidence for reproducing evaluation results
+
+The evaluation process has identified defects in retrieval isolation, domain scoping, scorer behavior, and retrieval configuration. Those failures are part of the evidence, not something removed from the project history.
+
+The principle is simple:
+
+> Claims should be limited to what has been built, tested, and preserved as evidence.
+
+---
+
+## Research
+
+Keystone is also the experimental platform for a technical-governance research program.
+
+The working manuscript:
+
+**Governed Execution as a Runtime Contract: A Substrate Architecture for Agentic AI**
+
+proposes six candidate runtime substrate dimensions:
+
+* Identity
+* Task state
+* Tempo
+* Cost
+* Currency
+* Fidelity
+
+The dimensions are research hypotheses, not a claim that these six properties form a complete theory of AI governance.
+
+A related research question now being developed is:
+
+> When conditions change during an agent execution, which changes are material to a prior governance decision, what must be revalidated, and what evidence should allow an independent reviewer to reconstruct why the resulting action proceeded, was held, denied, or escalated?
+
+The current candidate change classes include authority, governance, evidence, target/environment, interface, and execution state.
+
+This taxonomy is also a hypothesis to test, not a predetermined answer.
 
 ---
 
 ## Public artifacts
 
-- **Platform documentation** — architecture, the substrate model, extension capabilities, evaluation methodology, and access policy  
-  https://docs.getkeystone.ai/  
+### Documentation
 
-- **keystone-verify** — the open, endpoint-agnostic evaluation framework  
-  https://github.com/getkeystone/keystone-verify  
+Architecture, evaluation methodology, runtime controls, and research notes:
 
-- **keystone-ledger** — the published evaluation ledger with sealed passing and failing artifacts  
-  https://github.com/getkeystone/keystone-ledger  
+https://docs.getkeystone.ai/
 
-- **Platform narrative** — employer-facing overview  
-  https://getkeystone.ai/platform/  
+### Keystone Verify
+
+Open endpoint-agnostic evaluation tooling:
+
+https://github.com/getkeystone/keystone-verify
+
+### Keystone Ledger
+
+Published evaluation evidence, including passing and failing artifacts:
+
+https://github.com/getkeystone/keystone-ledger
+
+### Platform overview
+
+https://getkeystone.ai/platform/
 
 ---
 
-## Proprietary implementation
+## Implementation model
 
-The substrate and extension source — the conversational agent, the authorization-first retrieval engine, the substrate API, and the deployment configuration — is proprietary. The architecture, evaluation outcomes, and design rationale are public; the implementation is the product.
+The core platform implementation remains proprietary.
 
-Read-only access for interview-depth technical review is available on request to hiring managers, staff engineers, and technical evaluators. Response within 24 hours. See the access policy:  
-https://docs.getkeystone.ai/access/
+Public material includes:
+
+* architecture,
+* evaluation methods,
+* research framing,
+* design rationale,
+* evaluation artifacts,
+* selected tooling.
+
+The proprietary implementation includes the primary runtime services, governed retrieval engine, orchestration components, application workflows, and deployment configuration.
+
+The architecture and research claims are intentionally separable from the proprietary implementation.
 
 ---
 
-## Not claimed
+## What Keystone does not claim
 
-Keystone does **not** currently claim:
+Keystone does not currently claim:
 
-- Enterprise HA / disaster recovery  
-- Multi-node distributed production deployment  
-- Production OIDC / SAML identity integration  
-- Third-party penetration testing  
-- Formal accessibility certification  
+* Enterprise high availability or disaster recovery
+* Multi-node distributed production deployment
+* Production OIDC or SAML identity integration
+* Independent penetration testing
+* Formal accessibility certification
+* Universal completeness of the proposed governance substrate
+* Proven effectiveness of generalized action-binding controls
+* Validated completeness of the proposed material-change taxonomy
+* Formal proof that audit evidence establishes substantive correctness, safety, legality, or desirability
 
-Claims are limited to what has been built, tested, and published.
+These boundaries are deliberate.
+
+---
+
+## Engineering background
+
+Keystone is informed by more than 12 years of enterprise contact-center and cloud engineering experience at Genesys across on-premises, hybrid, and cloud environments.
+
+That work included production troubleshooting, routing, knowledge retrieval, digital channels, conversational systems, migrations, distributed integrations, and direct collaboration with customer engineers, DBAs, developers, deployment teams, and technical managers.
+
+Many of the operational concerns now appearing in agentic AI systems are familiar systems-engineering problems:
+
+* identity,
+* state,
+* routing,
+* deadlines,
+* capacity,
+* authorization,
+* escalation,
+* recovery,
+* evidence,
+* auditability.
+
+Large language models add new capabilities and failure modes. They do not remove those operational requirements.
 
 ---
 
 ## Links
 
-- Website: https://getkeystone.ai/  
-- Docs: https://docs.getkeystone.ai/  
-- Platform: https://getkeystone.ai/platform/  
-- Eval ledger: https://github.com/getkeystone/keystone-ledger  
-- Lead engineer: https://www.linkedin.com/in/arnaldosepulveda/
+**Website:** https://getkeystone.ai/
+**Documentation:** https://docs.getkeystone.ai/
+**Platform:** https://getkeystone.ai/platform/
+**Evaluation ledger:** https://github.com/getkeystone/keystone-ledger
+**LinkedIn:** https://www.linkedin.com/in/arnaldosepulveda/
+**Contact:** [arnaldo@getkeystone.ai](mailto:arnaldo@getkeystone.ai)
