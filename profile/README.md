@@ -253,7 +253,7 @@ Large language models introduce new capabilities and failure modes. They do not 
 **Website:** https://getkeystone.ai/  
 **Documentation:** https://docs.getkeystone.ai/  
 **Platform:** https://getkeystone.ai/platform/  
-**Track A:** https://github.com/getkeystone/track-a-runtime-validity  
+**Track A:** https://github.com/getkeystone/runtime-validity  
 **Evaluation ledger:** https://github.com/getkeystone/keystone-ledger  
 **LinkedIn:** https://www.linkedin.com/in/arnaldosepulveda/  
 **Contact:** [arnaldo@getkeystone.ai](mailto:arnaldo@getkeystone.ai)
