@@ -36,11 +36,11 @@ Authorization-first retrieval for legal, financial, compliance, and other access
 
 Endpoint-agnostic evaluation infrastructure for governed retrieval and agent systems, with reproducible artifacts and regression evidence.
 
-These workloads share infrastructure for identity, task state, retrieval authorization, event-driven coordination, audit evidence, evaluation, observability, and model dispatch.
+Across these repositories, implemented mechanisms include identity, task state, retrieval authorization, audit evidence, evaluation, observability instrumentation, and model dispatch. Event-driven coordination is an optional integration path in Engage, not a universally served platform capability.
 
 ### Governed Execution
 
-**Governed Execution** is Keystone's runtime-governance research program and reference platform for autonomous and semi-autonomous AI systems.
+**Governed Execution** is Keystone's runtime-governance research and engineering program for autonomous and semi-autonomous AI systems.
 
 Its current architecture separates:
 
@@ -61,7 +61,7 @@ Results from an individual track do not automatically validate the broader platf
 
 ### Track A: Runtime Validity
 
-**[Track A Runtime Validity](https://github.com/getkeystone/track-a-runtime-validity)** is the first public Governed Execution track.
+**[Runtime Validity](https://github.com/getkeystone/runtime-validity)** is the first public Governed Execution track, identified in the research program as Track A.
 
 It studies:
 
@@ -86,12 +86,12 @@ Current implementation work includes:
 * fail-closed refusal when evidence or authorization is insufficient
 * explicit task lifecycle state
 * agent and runtime identity records
-* event-driven execution coordination
+* optional event-driven coordination code in the experimental Engage path
 * hash-chained audit records
 * endpoint-agnostic evaluation harnesses
 * structured failing and passing evaluation artifacts
-* OpenTelemetry instrumentation for tokens, latency, cost, and budget
-* local-first model execution without external model-API dependency for core operation
+* OpenTelemetry instrumentation and schema fields for tokens, latency, cost, and budget where implemented
+* local-model execution options without an external model-API dependency for the documented core paths
 
 Some broader mechanisms described in the Governed Execution research program remain research architecture rather than demonstrated platform guarantees.
 
@@ -99,7 +99,7 @@ Some broader mechanisms described in the Governed Execution research program rem
 
 ## Evaluation
 
-Keystone publishes evaluation artifacts rather than treating successful demonstrations as sufficient evidence.
+Keystone publishes retained internal evaluation artifacts rather than treating successful demonstrations as sufficient evidence. These results are not independent validation.
 
 Current evaluation work includes:
 
@@ -158,7 +158,7 @@ This taxonomy is also a hypothesis to test.
 
 Public runtime-validity and revalidation reference implementation:
 
-https://github.com/getkeystone/track-a-runtime-validity
+https://github.com/getkeystone/runtime-validity
 
 ### Documentation
 
@@ -198,7 +198,7 @@ Public material includes:
 * evaluation artifacts
 * selected tooling
 
-The primary platform runtime, governed retrieval services, orchestration components, application workflows, deployment configuration, and operational infrastructure remain proprietary unless explicitly published.
+Some service implementations, application workflows, deployment configuration, and operational infrastructure remain proprietary unless explicitly published. This should not be read as a claim that a complete composed Governed Execution Runtime exists today.
 
 Public research implementations such as Track A are intentionally separable from the proprietary runtime.
 
