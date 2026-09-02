@@ -1,130 +1,102 @@
 # Keystone Applied Intelligence
 
-**Independent engineering and R&D practice for governed AI systems, agent infrastructure, retrieval, and evaluation.**
+**Independent AI engineering and R&D practice building retrieval, conversational AI, evaluation, and runtime-control systems for enterprise and higher-consequence environments.**
 
-Local-first. Evidence-backed. Fail-closed.
+Keystone is an environment for building concrete AI mechanisms, testing how they behave, retaining evidence, and improving the implementation when evaluation exposes failures.
 
-Keystone Applied Intelligence develops and studies AI systems that operate under explicit authority, evidence, evaluation, and audit constraints.
+Keystone's public projects are related engineering instruments, but they should not be interpreted as one fully composed or universally validated production runtime. A mechanism demonstrated in one workload is not automatically attributed to another.
 
-The work focuses on the runtime layer between model capability and external consequence.
+## Applied AI systems
 
-A central principle is:
+Current work spans retrieval and RAG, conversational workflows, authorization-aware retrieval, evaluation and regression tooling, observability, local model execution, explicit task state, and bounded runtime controls.
 
-> Orchestration determines how work proceeds. Governance determines whether the intended consequence remains justified to proceed.
+### Keystone Gov
 
-The goal is not to make stronger claims about AI systems. It is to make narrower claims that can be implemented, tested, inspected, reproduced, and challenged.
+[Keystone Gov](https://github.com/getkeystone/keystone-gov) is a FastAPI RAG reference implementation. Its query path combines PostgreSQL full-text search and pgvector retrieval, query-time ACL predicates, deterministic procedural reranking, evidence thresholds, local generation, HHEM as an additional factual-consistency signal, and per-record HMAC integrity checks with documented coverage limits.
 
----
+### Keystone Engage
 
-## Engineering and research structure
+[Keystone Engage](https://github.com/getkeystone/keystone-engage) is a conversational and workflow AI reference implementation. The default served application uses one `EngageOrchestrator` with retrieval authorization, escalation, intent classification, RAG dispatch, task state, and audit records.
 
-Keystone combines applied AI engineering with a broader runtime-governance research program.
+A separate experimental application path registers five specialist agent identities across four coordination phases. Optional NATS JetStream integration belongs to that experimental path. This is not evidence of distributed production execution, durable leases, fencing, compare-and-swap guarantees, distributed correctness, or high availability.
 
-### Applied workloads
+### Keystone Counsel
 
-Keystone currently develops three related workloads on shared infrastructure.
+[Keystone Counsel](https://github.com/getkeystone/keystone-counsel) implements authorization-first retrieval. Role decisions run before retrieval; classification and client predicates restrict candidate rows before model context construction. The response path includes confidence gating and citations.
 
-#### Keystone Engage
+Regression tests cover a previously identified cross-client retrieval-isolation defect. The public corpus is currently global content, and the implementation does not establish production enterprise identity integration or a production multi-client deployment.
 
-Governed conversational and agent workflows for higher-consequence interactions, including explicit task state, evaluation, escalation, and human-review patterns.
+### Keystone Verify
 
-#### Keystone Counsel
+[Keystone Verify](https://github.com/getkeystone/keystone-verify) is endpoint-agnostic evaluation tooling. Profiles describe compatible HTTP endpoints, declarative cases define assertions, and a deterministic pure-function judge evaluates mapped response fields. The runner measures latency and writes structured results and run metadata.
 
-Authorization-first retrieval for legal, financial, compliance, and other access-controlled knowledge workloads.
+The output is inspectable JSON evidence. It is not cryptographically sealed and does not prove the substantive correctness of the evaluated system.
 
-#### Keystone Verify
+### Keystone Ledger
 
-Endpoint-agnostic evaluation infrastructure for governed retrieval and agent systems, with reproducible artifacts and regression evidence.
-
-Across these repositories, implemented mechanisms include identity, task state, retrieval authorization, audit evidence, evaluation, observability instrumentation, and model dispatch. Event-driven coordination is an optional integration path in Engage, not a universally served platform capability.
-
-### Governed Execution
-
-**Governed Execution** is Keystone's runtime-governance research and engineering program for autonomous and semi-autonomous AI systems.
-
-Its current architecture separates:
-
-* a **control plane** for authority, policy, admissibility, placement, budget, and release
-* an **execution plane** for models, retrieval, tools, delegation, and workflows
-* an **evidence plane** for decisions, authorizations, actions, evaluations, failures, and outcomes
-* a separate **action boundary** governing whether model or agent output may create external consequence
-
-Governed Execution is being developed through bounded research tracks.
-
-Each track isolates a governance question so its behavior, assumptions, failure modes, and evidence can be tested separately before broader integration.
-
-Results from an individual track do not automatically validate the broader platform. Composition, interaction effects, failure propagation, and portability require separate evaluation.
-
----
-
-## Public research tracks
-
-### Track A: Runtime Validity
-
-**[Runtime Validity](https://github.com/getkeystone/runtime-validity)** is the first public Governed Execution track, identified in the research program as Track A.
-
-It studies:
-
-> Which runtime changes make a prior governance decision stale or otherwise invalid, what should trigger revalidation before consequential action, and what evidence should allow an external reviewer to reconstruct why the resulting action proceeded, was held, denied, or escalated?
-
-The current Track A implementation evaluates a narrow authority-revalidation case.
-
-It is an engineering reference implementation and experimental artifact, not evidence that the broader Governed Execution architecture is complete, correct, portable, or production-ready.
-
-Future tracks are intended to isolate additional governance questions before composition into the broader reference platform.
-
----
-
-## Implemented controls
-
-Keystone treats governance controls as runtime mechanisms rather than prompt instructions.
-
-Current implementation work includes:
-
-* authorization applied before protected content enters model context
-* query-time and corpus-scope retrieval predicates
-* fail-closed refusal when evidence or authorization is insufficient
-* explicit task lifecycle state
-* agent and runtime identity records
-* optional event-driven coordination code in the experimental Engage path
-* hash-chained audit records
-* endpoint-agnostic evaluation harnesses
-* structured failing and passing evaluation artifacts
-* OpenTelemetry instrumentation and schema fields for tokens, latency, cost, and budget where implemented
-* local-model execution options without an external model-API dependency for the documented core paths
-
-Some broader mechanisms described in the Governed Execution research program remain research architecture rather than demonstrated platform guarantees.
-
----
+[Keystone Ledger](https://github.com/getkeystone/keystone-ledger) retains internal evaluation artifacts, lineage, negative results, remediations, and evidence limitations. PASS and FAIL verdicts apply to the named cases, configurations, commits, and runs. They are not independent external validation.
 
 ## Evaluation
 
-Keystone publishes retained internal evaluation artifacts rather than treating successful demonstrations as sufficient evidence. These results are not independent validation.
+Evaluation is part of the engineering loop rather than a final demonstration.
 
-Current evaluation work includes:
+The retained `keystone-core/agent-v1` internal evaluation records:
 
-* a governed retrieval baseline with adversarial authorization testing
-* fail-closed retrieval behavior
-* 186 evaluation cases across 12 categories and 558 executions
-* regression testing that surfaced implementation defects before release
-* preserved failing runs alongside repaired and passing runs
-* structured evidence for reproducing evaluation results
+* 186 cases across 12 categories
+* 558 executions across three runs
+* adversarial authorization and bypass testing
+* 153 strict-pass cases, 33 characterization cases, and 0 strict failures at the evaluated commit
 
-The evaluation process has identified defects in retrieval isolation, domain scoping, scorer behavior, and retrieval configuration.
+Its failing predecessor is retained alongside the passing run. The evaluation surfaced implementation defects, including audit timestamp handling and missing injection patterns, which were then remediated and regression-tested.
 
-Those failures are part of the evidence.
+Other workloads have separate suites and evidence boundaries. These results should not be collapsed into one universal Keystone score.
 
-> Claims should be limited to what has been built, tested, and preserved as evidence.
+> An evaluation system should be able to expose implementation failures, not only confirm expected behavior.
 
----
+## Observability and operational engineering
 
-## Research
+The default Engage application calls its OpenTelemetry setup on the served path. Current implementation evidence supports:
 
-The current working manuscript is:
+* manual GenAI spans with model attributes
+* prompt and completion token attributes
+* latency attributes
+* automatic FastAPI HTTP tracing
+* OTLP/gRPC trace export
+* manually verified trace delivery to a self-hosted Grafana Tempo backend
 
-**Governed Execution as a Runtime Contract: A Substrate Architecture for Agentic AI**
+This does not establish OpenTelemetry Metrics API or `MeterProvider` support. Prometheus, Grafana dashboard, and Alertmanager configuration elsewhere should not be read as demonstrated runtime observability or enforcement.
 
-The manuscript proposes six candidate runtime substrate dimensions:
+Operational evidence is kept distinct from stronger conclusions: traces show recorded execution behavior, not that an action was authorized, justified, correct, or safe.
+
+## Engineering evidence and boundaries
+
+Mechanisms are attributed to the workload where they are implemented:
+
+| Workload | Current evidence |
+|---|---|
+| Gov | PostgreSQL FTS + pgvector hybrid retrieval, query-time ACLs, procedural reranking, bounded HHEM signal, per-record HMAC checks |
+| Engage | Single-orchestrator served path, experimental specialist coordination, task lifecycle mechanisms, hash-chained audit records, served-path tracing |
+| Counsel | Role, classification, and client retrieval restrictions; confidence gating; cross-client regression coverage |
+| Verify | Deterministic assertion-based HTTP evaluation and structured run artifacts |
+| Ledger | Retained internal evaluation lineage, failures, remediations, and limitations |
+| Runtime Validity | Controlled process-local authority-change and revalidation experiment |
+
+Local inference is available in the documented Gov, Engage, and Counsel paths through Ollama. Hash-chain formats and verification scope differ by workload; integrity evidence does not establish semantic correctness or valid authorization.
+
+## Governed Execution
+
+**Governed Execution is Keystone's research program examining runtime governance for consequential AI actions.** It is separate from the applied workload identity above and is not an existing production runtime.
+
+> Orchestration determines how work proceeds. Governance determines whether the intended consequence remains justified to proceed.
+
+The research architecture separates:
+
+* a **Control plane** for authority, policy, admissibility, placement, budget, and release
+* an **Execution plane** for models, retrieval, tools, delegation, and workflows
+* an **Evidence plane** for decisions, authorizations, actions, evaluations, failures, and outcomes
+* a separate **action boundary** determining whether output may create external consequence
+
+Six candidate runtime substrate dimensions are under study:
 
 * Identity
 * Task state
@@ -133,127 +105,67 @@ The manuscript proposes six candidate runtime substrate dimensions:
 * Currency
 * Fidelity
 
-These dimensions are research hypotheses and a candidate representation, not a claim that they form a complete ontology or theory of AI governance.
+Here, Currency asks:
 
-The current narrow research question is:
+> Does the original justification still legitimately authorize the intended consequence at the point of execution?
 
-> Which runtime changes make a prior governance decision stale or otherwise invalid, what should trigger revalidation before consequential action, and what evidence should let an external reviewer reconstruct why the resulting action proceeded, was held, denied, or escalated?
+Candidate classes of governance-material change include Authority, Governance / policy, Evidence, Target / environment, Interface / tool, and Execution state.
 
-Candidate classes of governance-material change currently include:
-
-* Authority
-* Governance / policy
-* Evidence
-* Target / environment
-* Interface / tool
-* Execution state
-
-This taxonomy is also a hypothesis to test.
-
----
-
-## Public artifacts
+The dimensions and change-class taxonomy are research hypotheses to test. They are not a complete ontology or validated coverage of AI governance.
 
 ### Track A: Runtime Validity
 
-Public runtime-validity and revalidation reference implementation:
+[Runtime Validity](https://github.com/getkeystone/runtime-validity) is the canonical repository for Track A.
 
-https://github.com/getkeystone/runtime-validity
+Its current research question is:
 
-### Documentation
+> Given a prior decision justification composed of heterogeneous governance obligations, which controlled runtime interventions invalidate which obligations, and under what conditions does obligation-scoped revalidation preserve the same policy-expected disposition as full commit-boundary reevaluation with lower revalidation work?
 
-Architecture, evaluation methodology, runtime controls, and research notes:
+Research priorities are invalidation mapping first, disposition preservation second, and revalidation work or latency third. These are priorities for the research program, not claims that the current implementation has completed them.
 
-https://docs.getkeystone.ai/
+The current implementation supports only a controlled process-local authority change, retention of a process-local transition artifact, and a full-revalidation result that can change from `MATCH` / `PROCEED` to `MISMATCH` / `HOLD`. `HOLD` is an implementation design choice, not a universal research conclusion. With `revalidation_mode="none"`, authority is `NOT_EVALUATED`; proceeding does not establish that the intended consequence remains justified.
 
-### Keystone Verify
+This evidence does not establish authentic external revocation, independent witness evidence, production authentication or authorization, durable persistence, cryptographic decision-to-transition binding, external consequence enforcement, distributed correctness, or universal validity of the Governed Execution architecture.
 
-Open endpoint-agnostic evaluation tooling:
-
-https://github.com/getkeystone/keystone-verify
-
-### Keystone Ledger
-
-Published evaluation evidence, including passing and failing artifacts:
-
-https://github.com/getkeystone/keystone-ledger
-
-### Platform overview
-
-https://getkeystone.ai/platform/
-
----
+The name **Governed Execution Runtime** is reserved for a future composed runtime. The current public repositories do not demonstrate that composition.
 
 ## Implementation model
 
-Keystone uses a mixed public and proprietary implementation model.
+Selected engineering implementations, documentation, evaluation methods, and artifacts are public. Some operational and deployment components remain private. Public research reference implementations are intentionally separable from applied workloads.
 
-Public material includes:
-
-* selected research reference implementations
-* architecture
-* evaluation methods
-* research framing
-* design rationale
-* evaluation artifacts
-* selected tooling
-
-Some service implementations, application workflows, deployment configuration, and operational infrastructure remain proprietary unless explicitly published. This should not be read as a claim that a complete composed Governed Execution Runtime exists today.
-
-Public research implementations such as Track A are intentionally separable from the proprietary runtime.
-
-A public reference implementation should not be interpreted as evidence that the same mechanism has been validated across every Keystone workload or deployment environment.
-
----
+Composition requires its own engineering and evaluation. Passing components do not establish that a composed system is correct, portable, or production-suitable.
 
 ## What Keystone does not claim
 
 Keystone does not currently claim:
 
 * enterprise high availability or disaster recovery
-* multi-node distributed production deployment
-* production OIDC or SAML identity integration
+* validated multi-node distributed production deployment
+* production OIDC or SAML integration
 * independent penetration testing
 * formal accessibility certification
-* universal completeness of the proposed governance substrate
-* validated completeness of the proposed material-change taxonomy
-* that one research track validates the broader platform
-* that composition of individually tested mechanisms is automatically correct
-* formal proof that audit evidence establishes substantive correctness, safety, legality, or desirability
-
-These boundaries are deliberate.
-
----
+* completeness of the Governed Execution substrate or change taxonomy
+* portability across arbitrary workloads
+* correctness of composed mechanisms merely because components passed individually
+* semantic correctness merely because audit evidence has integrity
 
 ## Engineering background
 
-Keystone is informed by more than 12 years of enterprise contact-center and cloud engineering experience at Genesys across on-premises, hybrid, and cloud environments.
+Keystone is informed by more than 12 years of enterprise contact-center and cloud systems work at Genesys. That experience included knowledge retrieval, classification and earlier conversational systems, Digital Services, Agent Workspace, customer and interaction data, routing, WFM-integrated operational statistics, enterprise integrations, production incidents, migrations, go-lives, clustered and high-volume deployments, and distributed troubleshooting.
 
-That work included production troubleshooting, routing, knowledge retrieval, digital channels, conversational systems, migrations, distributed integrations, and direct collaboration with customer engineers, DBAs, developers, deployment teams, and technical managers.
+Direct work with customers, product managers, developers, and technical leaders established the operational lineage behind Keystone: trace the real execution path, isolate failure domains across product boundaries, preserve evidence, and improve systems without confusing an observed behavior with a universal conclusion. Genesys-era classification and conversational systems are not presented as modern LLM systems.
 
-Many operational concerns now appearing in agentic AI systems are familiar systems-engineering problems:
+## Public artifacts
 
-* identity
-* state
-* routing
-* deadlines
-* capacity
-* authorization
-* escalation
-* recovery
-* evidence
-* auditability
-
-Large language models introduce new capabilities and failure modes. They do not remove those operational requirements.
-
----
-
-## Links
-
-**Website:** https://getkeystone.ai/  
-**Documentation:** https://docs.getkeystone.ai/  
-**Platform:** https://getkeystone.ai/platform/  
-**Track A:** https://github.com/getkeystone/runtime-validity  
-**Evaluation ledger:** https://github.com/getkeystone/keystone-ledger  
-**LinkedIn:** https://www.linkedin.com/in/arnaldosepulveda/  
-**Contact:** [arnaldo@getkeystone.ai](mailto:arnaldo@getkeystone.ai)
+* [Website](https://getkeystone.ai/)
+* [Documentation](https://docs.getkeystone.ai/)
+* [Live demo](https://demo.getkeystone.ai/)
+* [Keystone Gov](https://github.com/getkeystone/keystone-gov)
+* [Keystone Engage](https://github.com/getkeystone/keystone-engage)
+* [Keystone Counsel](https://github.com/getkeystone/keystone-counsel)
+* [Keystone Verify](https://github.com/getkeystone/keystone-verify)
+* [Keystone Ledger](https://github.com/getkeystone/keystone-ledger)
+* [Runtime Validity](https://github.com/getkeystone/runtime-validity)
+* [Personal engineering portfolio](https://arnaldosepulveda.com/)
+* [LinkedIn](https://www.linkedin.com/in/arnaldosepulveda/)
+* [Contact](mailto:arnaldo@getkeystone.ai)
