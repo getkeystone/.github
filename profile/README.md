@@ -1,10 +1,34 @@
 # Keystone Applied Intelligence
 
-**Independent AI engineering and R&D practice building retrieval, conversational AI, evaluation, and runtime-control systems for enterprise and higher-consequence environments.**
+**Applied AI engineering for operational workflows, knowledge systems, evaluation, and governed execution.**
 
-Keystone is an environment for building concrete AI mechanisms, testing how they behave, retaining evidence, and improving the implementation when evaluation exposes failures.
+Keystone is an independent engineering and R&D practice focused on understanding where AI belongs in real enterprise workflows, building concrete mechanisms when justified, and evaluating their behavior and limits.
+
+The work spans two related questions:
+
+1. **What should change in the operation?** Operational evidence, workflow diagnosis, intervention selection, and measurable outcomes.
+2. **How should AI behave when it becomes part of that intervention?** Retrieval, conversational workflows, evaluation, observability, authorization boundaries, and governed execution.
+
+Keystone builds concrete mechanisms, evaluates them, and preserves both failures and passing evidence rather than presenting only the polished result.
 
 Keystone's public projects are related engineering instruments, but they should not be interpreted as one fully composed or universally validated production runtime. A mechanism demonstrated in one workload is not automatically attributed to another.
+
+## Related applied work: Support Operations Intelligence
+
+[Support Operations Intelligence](https://github.com/arnaldosepulveda/support-operations-intelligence) is Arnaldo Sepulveda's current public portfolio and research project examining the layer before AI implementation:
+
+```text
+operational evidence
+    -> baseline
+    -> diagnosis
+    -> intervention selection
+    -> implementation
+    -> evaluation
+```
+
+It complements Keystone's AI engineering work by asking whether AI is warranted before selecting an AI mechanism.
+
+Support Operations Intelligence is maintained separately from the Keystone reference implementations and should not be interpreted as part of a composed Keystone production platform.
 
 ## Applied AI systems
 
