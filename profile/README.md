@@ -16,7 +16,7 @@ These repositories are separate reference implementations for retrieval, authori
 
 ## Evaluation evidence
 
-A retained internal evaluation of keystone-core/agent-v1 used 186 cases across 12 categories and 558 executions. At keystone-gov commit ff66368 the run produced 144 strict passes, 9 strict failures, and 33 characterization cases; the failures traced to four implementation defects, which were fixed. At commit 6ac192a the same cases produced 153 strict passes and 33 characterization cases. Both runs are retained in keystone-ledger. Results apply only to the evaluated commits, configurations, and cases, and are not independent validation.
+keystone-core/agent-v0 was evaluated on 186 cases across 12 categories at keystone-gov commit ff66368: 144 strict passes, 9 strict failures, and 33 characterization cases. The failures traced to four implementation defects, which were fixed. keystone-core/agent-v1 reran the same 186 cases at commit 6ac192a (558 executions): 153 strict passes and 33 characterization cases. Results apply only to the evaluated commits, configurations, and cases, and are not independent validation. Both runs are retained in keystone-ledger.
 
 ## Real-user pilot
 
