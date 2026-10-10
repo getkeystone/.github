@@ -1,18 +1,28 @@
 # Keystone Applied Intelligence
 
-Independent applied AI engineering and research by Arnaldo Sepulveda, started in late 2024.
+Independent applied AI engineering and research by [Arnaldo Sepulveda](https://www.linkedin.com/in/arnaldosepulveda/). Keystone Applied Intelligence is a Canadian sole proprietorship registered in 2026. Independent research and engineering work began in late 2024, before registration.
 
-These repositories are separate reference implementations for retrieval, authorization-aware access, conversational workflows, and evaluation, built and tested on local infrastructure. They are not a commercial product and do not represent client engagements.
+Keystone's developing direction is to help organizations understand operational workflows, establish credible evidence and baselines, diagnose operational constraints, compare possible interventions, determine whether AI is warranted, design and implement appropriate technical solutions, and evaluate technical behavior and operational outcomes. This is a developing services direction, not an assertion that Keystone has already delivered commercial client projects.
 
-## Repositories
+## Public repositories
 
-- [keystone-gov](https://github.com/getkeystone/keystone-gov): hybrid retrieval and RAG API (PostgreSQL full-text search + pgvector) with citations, evidence thresholds that refuse when support is insufficient, query-time access control, and an HMAC-chained audit log.
-- [keystone-counsel](https://github.com/getkeystone/keystone-counsel): authorization-first retrieval with role, document-classification, and client-isolation filters.
-- [keystone-engage](https://github.com/getkeystone/keystone-engage): conversational workflow reference implementation with a default single orchestrator; a multi-agent coordinator is experimental and behind a feature flag.
-- [keystone-verify](https://github.com/getkeystone/keystone-verify): endpoint-agnostic evaluation harness with declarative assertions over HTTP responses and structured JSON results.
-- [keystone-ledger](https://github.com/getkeystone/keystone-ledger): retained evaluation runs, including failing runs, negative results, and remediation lineage.
-- [keystone-platform-docs](https://github.com/getkeystone/keystone-platform-docs): architecture, evaluation, and research documentation for these reference implementations.
-- [runtime-validity](https://github.com/getkeystone/runtime-validity): exploratory research on re-checking authority before an action proceeds. See its README for claim boundaries.
+### Implementation references
+
+These are separately composed reference implementations, not one integrated production platform.
+
+- [keystone-gov](https://github.com/getkeystone/keystone-gov): governed RAG — hybrid retrieval (PostgreSQL full-text search + pgvector), role-based ACL at the database layer, evidence thresholds, factual consistency scoring (HHEM-2.1-Open), fail-closed refusal, and HMAC-SHA256 audit trail.
+- [keystone-counsel](https://github.com/getkeystone/keystone-counsel): authorization-first retrieval — role, document-classification, and client-isolation filters for regulated content. Enforced at the retrieval layer, not post-filtered.
+- [keystone-engage](https://github.com/getkeystone/keystone-engage): governed conversational agent — authorization before retrieval, severity-tier human routing, intent classification, fail-closed refusal, and hash-chained audit. A multi-agent coordinator exists behind a feature flag; the served path is a single orchestrator.
+
+### Evaluation and evidence
+
+- [keystone-verify](https://github.com/getkeystone/keystone-verify): standalone endpoint-agnostic evaluation harness with a deterministic judge, declarative assertions, and structured JSON artifacts. Open-source.
+- [keystone-ledger](https://github.com/getkeystone/keystone-ledger): retained evaluation runs — passing and failing runs, negative results, remediation lineage, and per-test artifacts. Internal evaluation, not independent validation.
+
+### Architecture and research
+
+- [keystone-platform-docs](https://github.com/getkeystone/keystone-platform-docs): architecture, evaluation methodology, and research documentation.
+- [runtime-validity](https://github.com/getkeystone/runtime-validity): bounded research into whether runtime condition changes invalidate obligations supporting a prior decision. An experimental research component, not validation of a full Governed Execution architecture.
 
 ## Evaluation evidence
 
@@ -24,14 +34,14 @@ A role-aware knowledge-access prototype built from this work was piloted on-prem
 
 ## Not claimed
 
-- commercial deployments or paying customers
-- one integrated production platform across these repositories
-- independent or third-party evaluation
-- enterprise HA or disaster recovery
-- multi-node distributed production deployment
-- production OIDC/SAML identity integration
-- third-party penetration testing
-- formal accessibility certification
+- Commercial deployments or paying customers
+- One integrated production platform across these repositories
+- Independent or third-party evaluation
+- Enterprise HA or disaster recovery
+- Multi-node distributed production deployment
+- Production OIDC/SAML identity integration
+- Third-party penetration testing
+- Formal accessibility certification
 
 ## Stack
 
