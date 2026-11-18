@@ -1,8 +1,10 @@
 # Keystone Applied Intelligence
 
-Independent applied AI engineering and research by [Arnaldo Sepulveda](https://www.linkedin.com/in/arnaldosepulveda/). Keystone Applied Intelligence is a Canadian sole proprietorship registered in 2026. Independent research and engineering work began in late 2024, before registration.
+Independent, non-commercial applied AI and research by [Arnaldo Sepulveda](https://www.linkedin.com/in/arnaldosepulveda/), done part time on his own time. Keystone Applied Intelligence is a Canadian sole proprietorship registered in 2026. It does not currently offer services or products. Independent applied AI and research work began in late 2024, before registration.
 
-Keystone's developing direction is to help organizations understand operational workflows, establish credible evidence and baselines, diagnose operational constraints, compare possible interventions, determine whether AI is warranted, design and implement appropriate technical solutions, and evaluate technical behavior and operational outcomes. This is a developing services direction, not an assertion that Keystone has already delivered commercial client projects.
+Current focus: operational workflows in buildings. The first lab project is a heating-plant simulation, in progress, to produce realistic operating data for testing maintenance workflows. The earlier reference systems (retrieval, conversational workflows, evaluation and runtime controls) remain public with their evidence and limits.
+
+Keystone does not offer services or products and has no clients. The repositories, documentation and evidence are published for review and learning.
 
 ## Public repositories
 
